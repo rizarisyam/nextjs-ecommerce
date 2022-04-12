@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="bg-[#FFFFFF] py-4 fixed bottom-0 left-0 w-full">
+        <footer className="bg-[#FFFFFF] py-4 bottom-0 left-0 w-full">
             <section className="grid md:grid-cols-4 place-items-center">
                 <div className="flex flex-col gap-2 ">
                     <h1 className="font-semibold">Get in touch</h1>
