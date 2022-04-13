@@ -1,4 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { cartActions } from '../../store/reducers/cart';
 
 import { useRouter } from 'next/router'
 import axios from 'axios';
@@ -10,6 +12,27 @@ import { formatCurrency } from '../../helper/formatCurrency'
 const ProductDetailPage = (props) => {
     const router = useRouter()
     const { product } = props
+
+    const dispatch = useDispatch()
+
+    const quantity = useSelector((state) => state.cart.quantity)
+    const quantityInput = useRef(quantity)
+
+
+    const addCartHandler = () => {
+        dispatch(cartActions.addCart(product))
+    }
+
+    const removeCartHandler = () => {
+        dispatch(cartActions.removeCart())
+    }
+
+    const calculateSubtotal = () => {
+        if (quantity < 1) {
+            return product.price
+        }
+        return product.price * quantity
+    }
 
     return (
         <Fragment>
@@ -40,18 +63,20 @@ const ProductDetailPage = (props) => {
                     <div className='border rounded-md max-w-xs p-3 flex flex-col gap-2'>
                         <h1>Atur jumlah dan catatan</h1>
                         <div className='flex border w-fit h-6 rounded-md py-4 px-2 items-center'>
-                            <MinusIcon className='w-5 h-5' />
-                            <input type="text" className='text-sm w-8 h-4 border-transparent focus:border-transparent focus:ring-0' />
-                            <PlusIcon className='w-5 h-5' />
+                            <button onClick={removeCartHandler} disabled={quantity < 1}>
+                                <MinusIcon className='w-5 h-5' />
+                            </button>
+                            <input value={quantity} onChange={() => quantity} type="text" className='text-sm w-10 h-4 px-2 border-transparent focus:border-transparent focus:ring-0' />
+                            <PlusIcon onClick={addCartHandler} className='w-5 h-5' />
                         </div>
 
                         <div className='flex justify-between mt-8'>
                             <h3 className='text-gray-600'>Subtotal</h3>
-                            <h1>{formatCurrency(product.price)}</h1>
+                            <h1>{formatCurrency(product.price * quantity)}</h1>
                         </div>
 
                         <div className='flex flex-col gap-4'>
-                            <button className='flex items-center justify-center bg-green-500 text-gray-100 rounded-lg p-2'>
+                            <button onClick={addCartHandler} className='flex items-center justify-center bg-green-500 text-gray-100 rounded-lg p-2'>
                                 <PlusIcon className='w-4 h-4' />
                                 <span className='font-semibold'>Keranjang</span>
                             </button>

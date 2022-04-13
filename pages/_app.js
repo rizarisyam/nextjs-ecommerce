@@ -1,4 +1,6 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, Fragment } from 'react'
+import store from '../store'
+import { Provider } from 'react-redux'
 import Router from 'next/router'
 import '../styles/globals.css'
 import Layout from '../components/layout'
@@ -19,9 +21,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
       {!loading ? (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
       ) : <LoadingSpinner />}
 
     </Fragment>
