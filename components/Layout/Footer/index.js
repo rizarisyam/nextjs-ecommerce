@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="bg-[#FFFFFF] py-4 bottom-0 left-0 w-full">
+        <footer className="bg-[#FFFFFF] py-4 w-full mt-auto">
             <section className="grid md:grid-cols-4 place-items-center">
                 <div className="flex flex-col gap-2 ">
                     <h1 className="font-semibold">Get in touch</h1>
@@ -48,21 +48,21 @@ const Footer = () => {
             <section className="px-36 flex flex-col gap-2">
                 <h1>Product tags</h1>
                 <div className="flex gap-4">
-                <div className="bg-gray-400 w-fit px-2 rounded-full">
-                    <h1>Beans</h1>
-                </div>
+                    <div className="bg-gray-400 w-fit px-2 rounded-full">
+                        <h1>Beans</h1>
+                    </div>
 
-                <div className="bg-gray-400 w-fit px-2 rounded-full">
-                    <h1>Beans</h1>
-                </div>
+                    <div className="bg-gray-400 w-fit px-2 rounded-full">
+                        <h1>Beans</h1>
+                    </div>
 
-                <div className="bg-gray-400 w-fit px-2 rounded-full">
-                    <h1>Beans</h1>
-                </div>
+                    <div className="bg-gray-400 w-fit px-2 rounded-full">
+                        <h1>Beans</h1>
+                    </div>
 
-                <div className="bg-gray-400 w-fit px-2 rounded-full">
-                    <h1>Beans</h1>
-                </div>
+                    <div className="bg-gray-400 w-fit px-2 rounded-full">
+                        <h1>Beans</h1>
+                    </div>
                 </div>
                 <h1 className="py-2">Copyright &copy; {new Date().getFullYear()} Riza Nurfat Risyam</h1>
             </section>

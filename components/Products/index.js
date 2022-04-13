@@ -1,10 +1,12 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import Product from './Product'
 
 const Products = ({ data }) => {
 
+
     return (
         <Fragment>
+
             <section className='px-8 grid grid-cols-4 place-items-center gap-x-2 gap-y-8 min-h-screen py-10'>
                 {data.map((product) => (
                     <Product key={product.id}
@@ -16,6 +18,8 @@ const Products = ({ data }) => {
                 ))}
 
             </section>
+
+
 
         </Fragment>
     )

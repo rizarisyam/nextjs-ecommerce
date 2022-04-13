@@ -1,10 +1,11 @@
-import {Fragment} from 'react'
+import { Fragment } from 'react'
 import Products from '../components/Products'
 import axios from 'axios'
 
 function Home(props) {
 
-  const {products} = props
+  const { products } = props
+
 
   return (
     <Fragment>
@@ -14,14 +15,13 @@ function Home(props) {
 }
 
 export async function getStaticProps() {
-
   const response = await axios.get('https://fakestoreapi.com/products');
   const products = response.data;
 
   return {
-      props: {
-          products
-      }
+    props: {
+      products
+    }
   }
 }
 

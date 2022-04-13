@@ -1,13 +1,15 @@
-import {Fragment} from 'react'
+import { Fragment } from 'react'
 import Header from "./UI/Header";
 import Footer from './Layout/Footer';
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
     return (
         <Fragment>
-            <Header />
-            <main >{children}</main>
-            <Footer />
+            <div className='min-h-screen flex flex-col'>
+                <Header />
+                <main >{children}</main>
+                <Footer />
+            </div>
         </Fragment>
     )
 }
